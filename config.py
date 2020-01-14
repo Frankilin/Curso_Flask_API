@@ -1,0 +1,9 @@
+DEBUG = True
+
+USERNAME = 'root'
+PASSWORD = '#techsallus$'
+SERVER = 'localhost'
+DB = 'TN_TAREFAS'
+
+SQLALCHEMY_DATABASE_URI = f'mysql://{USERNAME}:{PASSWORD}@{SERVER}/{DB}'
+SQLALCHEMY_TRACK_MODIFICATIONS = True
