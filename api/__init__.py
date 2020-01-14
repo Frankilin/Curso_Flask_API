@@ -12,5 +12,5 @@ ma = Marshmallow(app)
 
 api = Api(app)
 
-from .views import tarefas_views
-from .models import tarefa_model
+from .views import tarefas_views, projeto_views
+from .models import tarefa_model, projeto_model
