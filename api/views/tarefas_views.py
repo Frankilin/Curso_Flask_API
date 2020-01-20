@@ -5,15 +5,20 @@ from api import api
 from ..entidades import tarefas
 from ..schemas import tarefa_schema
 from ..services import tarefa_service, projeto_service
+from ..models.tarefa_model import Tarefa
+
+from pagination import paginate
+
 
 
 class TarefasList(Resource):
 
     # LISTAR TODAS TAREFAS
     def get(self):
-        tarefas = tarefa_service.listar_tarefas()
+        #tarefas = tarefa_service.listar_tarefas()
         ts = tarefa_schema.TarefaSchema(many=True)
-        return ts.jsonify(tarefas)
+        #return ts.jsonify(tarefas)
+        return paginate(Tarefa, ts)
 
     # CADASTRAR TAREFA
     def post(self):

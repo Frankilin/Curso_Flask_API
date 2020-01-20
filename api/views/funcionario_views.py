@@ -22,12 +22,8 @@ class FuncionarioList(Resource):
 
     # POST
     def post(self):
-
-        # Verificar se o funcionário existe
-        pass
-
         # Instancia um Schema, responsável pela validação dos dados
-        fs = funcionario_schema()
+        fs = funcionario_schema.FuncionarioSchema()
 
         # Passa o resultado da validação para o Validate
         validate = fs.validate(request.json)
@@ -108,15 +104,14 @@ class FuncionarioDetail(Resource):
 
         # Se o funcionário não existir
         if funcionario is None:
-            make_response(jsonify("Funcionário não encontrado"), 404)
+            return make_response(jsonify("Funcionário não encontrado"), 404)
         else:
-
             # Passa o projeto para ser deletado no BD
-            funcionario_service.deletar_funcionario(id)
+            funcionario_service.deletar_funcionario(funcionario)
 
             # Retorna apenas o Status Code
             return make_response('', 204)
 
 
 api.add_resource(FuncionarioList, '/funcionarios')
-api.add_resource(FuncionarioDetail, '/funcionario')
+api.add_resource(FuncionarioDetail, '/funcionario/<int:id>')

@@ -14,6 +14,6 @@ class Tarefa(db.Model):
     # Criando uma nova coluna na tabela TAREFA, inserindo o ID de um projeto
     projeto_id = db.Column(db.Integer, db.ForeignKey("projeto.id"))
 
-    # Fazendo relacionamento com a tabela projetos e sincronizando para
+    # Fazendo relacionamento (1 -> N) com a tabela projetos e sincronizando para
     # listar todas as tarefas que está vinculada a algum projeto
     projeto = db.relationship(projeto_model.Projeto, backref=db.backref("tarefas", lazy="dynamic"))

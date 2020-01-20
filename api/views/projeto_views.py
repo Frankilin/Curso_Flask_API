@@ -37,9 +37,10 @@ class ProjetoLIst(Resource):
             # Atribui o input do usuário as variáveis para resem gravadas
             nome = request.json["nome"]
             descricao = request.json["descricao"]
+            funcionarios = request.json["funcionarios"]
 
             # Passa o resultado do input para a Entidade e atribui o resultado a variável
-            projeto_novo = projeto.Projeto(nome=nome, descricao=descricao)
+            projeto_novo = projeto.Projeto(nome=nome, descricao=descricao, funcionarios=funcionarios)
 
             # Cria uma nova tarefa
             result = projeto_service.cadastrar_projeto(projeto_novo)
@@ -88,9 +89,10 @@ class ProjetoDetail(Resource):
             # Atribui o input do usuário as variáveis para resem gravadas
             nome = request.json["nome"]
             descricao = request.json["descricao"]
+            funcionarios = request.json["funcionarios"]
 
             # Passa os dados da entidade para a variável projeto_editado
-            projeto_editado = projeto.Projeto(nome=nome, descricao=descricao)
+            projeto_editado = projeto.Projeto(nome=nome, descricao=descricao, funcionarios=funcionarios)
 
             # Editando no banco
             projeto_service.editar_tarefa(projeto_bd, projeto_editado)
