@@ -1,5 +1,6 @@
 from flask import request, make_response, jsonify
 from flask_restful import Resource
+from flask_jwt_extended import jwt_required
 
 from api import api
 from ..entidades import tarefas
@@ -14,6 +15,7 @@ from pagination import paginate
 class TarefasList(Resource):
 
     # LISTAR TODAS TAREFAS
+    @jwt_required
     def get(self):
         #tarefas = tarefa_service.listar_tarefas()
         ts = tarefa_schema.TarefaSchema(many=True)
